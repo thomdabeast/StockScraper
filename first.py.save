@@ -1,0 +1,27 @@
+#! /usr/bin/python
+
+import urllib
+import re
+stockname = ""
+
+
+
+while stockname != 'exit':
+  htmlfile = urllib.urlopen("http://finance.yahoo.com/q?s=INTL&ql=1")
+  htmltext = htmlfile.read()
+
+  regex = '<span id="yfs_l84_intl">(.+?)</span>'
+  pattern = re.compile(regex)
+
+  file.write("INTL, ")
+
+  intlprice = 0
+
+  price = re.findall(pattern,htmltext)
+  intlprice = str(price).split("\'", 2)[1]
+  file.write(intlprice + ',')
+  
+file.close()
+
+print price
+
